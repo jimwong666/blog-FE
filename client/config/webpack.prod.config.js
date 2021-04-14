@@ -48,7 +48,7 @@ module.exports = merge(webpackBaseConfig, {
 				]
 			},
 			{
-				test: /\.css$/,
+				test: /\.(less|css)$/,
 				include: /node_modules/,
 				use: [
                     {
@@ -59,7 +59,14 @@ module.exports = merge(webpackBaseConfig, {
                     },
 					{
 						loader: 'css-loader'
-					}
+					},
+                    {
+                        loader: 'less-loader',
+                        options: {
+                            // modifyVars,
+                            javascriptEnabled: true
+                        }
+                    }
 				]
 			},
 			{
@@ -121,7 +128,7 @@ module.exports = merge(webpackBaseConfig, {
 					chunks: "initial", // 只打包初始时依赖的第三方
 					priority: 10
 				},
-				'abiz-rc-aeps': {
+				antd: {
 					name: 'antd',
 					test: /[\\/]node_modules[\\/]antd[\\/]/,
 					priority: 20

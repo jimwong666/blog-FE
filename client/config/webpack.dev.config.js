@@ -73,14 +73,21 @@ module.exports = merge(webpackBaseConfig, {
                 ]
             },
             {
-                test: /\.css$/,
+                test: /\.(less|css)$/,
                 include: /node_modules/,
                 use: [
                     {
                         loader: 'style-loader'
                     },
                     {
-                        loader: 'css-loader'
+                        loader: 'css-loader',
+                    },
+                    {
+                        loader: 'less-loader',
+                        options: {
+                            // modifyVars,
+                            javascriptEnabled: true
+                        }
                     }
                 ]
             },
