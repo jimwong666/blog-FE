@@ -9,7 +9,7 @@
     "gulp": "gulp",
     "server:dev": "cross-env NODE_ENV=development node ./bin/www",
     "server": "cross-env NODE_ENV=production node ./bin/www",
-    "pm2": "pm2 start ./run.json"
+    "pm2": "pm2 start ./ecosystem.config.js && pm2 monit"
   },
   "serverConfig": {
     "cdn": "",
@@ -42,6 +42,7 @@
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.2",
+    "autoprefixer": "^9.4.3",
     "babel-loader": "^8.1.0",
     "babel-plugin-import": "^1.13.0",
     "clean-webpack-plugin": "^3.0.0",
@@ -53,9 +54,13 @@
     "gulp-sass": "^4.1.0",
     "html-webpack-plugin": "^4.4.1",
     "less": "^4.1.1",
+    "less-loader": "^5.0.0",
     "mini-css-extract-plugin": "^0.11.1",
     "node-sass": "^4.14.1",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "postcss": "^8.2.10",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.5.0",
     "react-refresh": "^0.8.3",
     "sass-loader": "^10.0.2",
     "style-loader": "^1.2.1",
@@ -82,7 +87,6 @@
     "express": "^4.17.1",
     "fr-generator": "^1.0.1",
     "immutable": "^4.0.0-rc.12",
-    "less-loader": "^5.0.0",
     "log4js": "^6.3.0",
     "moment": "^2.27.0",
     "nanoid": "^2.1.11",

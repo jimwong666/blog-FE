@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 const {merge} = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
@@ -57,11 +58,20 @@ module.exports = merge(webpackBaseConfig, {
                     {
                         loader: 'css-loader',
                         options: {
-                            importLoaders: 1, //使用import之前还要经过几次loader
+                            importLoaders: 2, //使用import之前还要经过几次loader
                             sourceMap: true,
                             // modules: {
                             //     localIdentName: '[local]--[hash:base64:5]'
                             // }
+                        }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            sourceMap: true,
+                            config: {
+                                path: path.resolve(__dirname, './postcss.config.js') //使用postcss单独的配置文件
+                            }
                         }
                     },
                     {
@@ -85,7 +95,6 @@ module.exports = merge(webpackBaseConfig, {
                     {
                         loader: 'less-loader',
                         options: {
-                            // modifyVars,
                             javascriptEnabled: true
                         }
                     }
