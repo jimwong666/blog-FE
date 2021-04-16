@@ -13,9 +13,9 @@
   },
   "serverConfig": {
     "cdn": "",
-    "domainUrl": "",
-    "port": 5000,
-    "backendUrl": "http://localhost:3008",
+    "domainUrl": "blogg.com",
+    "port": 80,
+    "backendUrl": "https://focusapi.vemic.com/mock/144",
     "socketTimeout": 60000,
     "fileSocketTimeout": 180000,
     "logDist": "log",
@@ -24,9 +24,9 @@
   },
   "webpackConfig": {
     "port": 3333,
-    "devApiPath": "https://focusapi.vemic.com/mock/144/imgList",
+    "devApiPath": "blogg.com",
     "assetsPath": "/dist/",
-    "distApiPath": "https://focusapi.vemic.com/mock/144/imgList"
+    "distApiPath": "blogg.com"
   },
   "keywords": [
     "react"

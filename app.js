@@ -14,6 +14,7 @@ const conf = require('./lib/utils/tools').GetAppConfig();
 const routerRigister = require('./lib/route');
 
 const globalFilter = require('./lib/filter/global-filter');
+const loginFilter = require('./lib/filter/login-filter');
 const csrfFilter = require('./lib/filter/csrf-filter');
 
 const express = require('express');
@@ -42,14 +43,15 @@ app.use('/public', express.static(path.join(__dirname, 'public'),{
 }));
 
 // filter
-// app.use(globalFilter.filter);
+app.use(globalFilter.filter);
+// app.use(loginFilter.filter);
 // app.use(csrfFilter.filter);
 
 routerRigister.route(app);
 // fe
-app.use(history({
-    index:'/dist/index.html',
-}));
+// app.use(history({
+//     index:'/dist/index.html',
+// }));
 // static
 app.use('/dist', express.static(path.join(__dirname, 'dist'),{
     cacheControl: false
