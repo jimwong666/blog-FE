@@ -45,7 +45,7 @@ app.use('/public', express.static(path.join(__dirname, 'public'),{
 // filter
 app.use(globalFilter.filter);
 app.use(loginFilter.filter);
-// app.use(csrfFilter.filter);
+app.use(csrfFilter.filter);
 
 routerRigister.route(app);
 // fe

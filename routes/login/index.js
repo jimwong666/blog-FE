@@ -7,15 +7,7 @@ const Session = require('../../lib/session');
 const logger = require('../../lib/logger');
 
 router.get('/', function(req, res, next) {
-	let params = {
-		userName: "",
-        password: "",
-		error: ""
-	};
-	
-	res.render('login', {
-		form: params
-	});
+	res.render('login');
 });
 
 router.post('/', function(req, res, next) {
@@ -25,17 +17,17 @@ router.post('/', function(req, res, next) {
 	};
 	
 	backend.post('/login', params, req, res, function(data){
-		logger.getLogger().info('【BACKEND】登录 | POST | req.body.logonUserName | req.realIp | /web/login | ' + JSON.stringify(data));
+		logger.getLogger().info('【登录】 | POST | req.body.userName | req.realIp | /web/login | ' + JSON.stringify(data));
 
 		if(data && data.retCode == 0){
 			console.log(Session.get);
             Session.logon(req, res, data);
             res.redirect('/');
         }else{
-            params.error = data.error;
-            res.render('login', {
-                form: params
-            });
+            res.locals.error = data.error;
+            res.locals.userName = req.body.userName;
+            res.locals.password = req.body.password;
+            res.render('login');
         }
 	})
 });

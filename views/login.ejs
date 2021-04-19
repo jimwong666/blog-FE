@@ -11,12 +11,12 @@
   <body>
     <form method="POST" action="/login">
       <label for="userName">登录名</label>
-      <input type="text" placeholder="登录名" name="userName" id="userName" value="<%= form.userName %>" />
+      <input type="text" placeholder="登录名" name="userName" id="userName" value="<%= locals.userName || ''  %>" />
       <label for="password">密码</label>
-      <input type="password" placeholder="密码" name="password" id="password" value="<%= form.password %>" />
+      <input type="password" placeholder="密码" name="password" id="password" value="<%= locals.password || ''  %>" />
       <hr>
       <div>
-        <%= form.error %> 
+        <%= locals.error || '' %> 
       </div>
       <button type="submit">登录</button>
     </form>
