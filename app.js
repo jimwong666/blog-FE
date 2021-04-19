@@ -44,14 +44,14 @@ app.use('/public', express.static(path.join(__dirname, 'public'),{
 
 // filter
 app.use(globalFilter.filter);
-// app.use(loginFilter.filter);
+app.use(loginFilter.filter);
 // app.use(csrfFilter.filter);
 
 routerRigister.route(app);
 // fe
-// app.use(history({
-//     index:'/dist/index.html',
-// }));
+app.use(history({
+    index:'/dist/index.html',
+}));
 // static
 app.use('/dist', express.static(path.join(__dirname, 'dist'),{
     cacheControl: false
