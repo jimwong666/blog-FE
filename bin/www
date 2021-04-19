@@ -20,7 +20,7 @@ function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
   }
-
+  let port = app.get('port');
   let bind = typeof port === 'string'
     ? 'Pipe ' + port
     : 'Port ' + port;
