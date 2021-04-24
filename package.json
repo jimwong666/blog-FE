@@ -13,7 +13,7 @@
   },
   "serverConfig": {
     "cdn": "",
-    "domainUrl": "blog.com",
+    "domainUrl": "paludina.com",
     "port": 80,
     "backendUrl": "https://focusapi.vemic.com/mock/144",
     "socketTimeout": 60000,
@@ -24,9 +24,9 @@
   },
   "webpackConfig": {
     "port": 3333,
-    "devApiPath": "blogg.com",
+    "devApiPath": "paludina.com",
     "assetsPath": "/dist/",
-    "distApiPath": "blogg.com"
+    "distApiPath": "paludina.com"
   },
   "keywords": [
     "react"
