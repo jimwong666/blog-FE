@@ -14,8 +14,8 @@
   "serverConfig": {
     "cdn": "",
     "domainUrl": "paludina.com",
-    "port": 80,
-    "backendUrl": "https://focusapi.vemic.com/mock/144",
+    "port": 443,
+    "backendUrl": "https://www.fastmock.site/mock/725fd773d01b56b0e9cf87bd2afa56e9/api",
     "socketTimeout": 60000,
     "fileSocketTimeout": 180000,
     "logDist": "log",

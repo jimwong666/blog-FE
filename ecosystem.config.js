@@ -7,7 +7,7 @@ module.exports = {
 			"script": "./bin/www",
 			"cwd": "./",
 			"exec_mode": "cluster",
-			"instances": numCPUs,
+			"instances": numCPUs >= 2 ? numCPUs : 2,
 			"error_file": "./log/pm2/app-err.log",
 			"out_file": "./log/pm2/app-out.log",
 			"env": {
