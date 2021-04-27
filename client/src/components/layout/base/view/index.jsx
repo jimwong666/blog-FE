@@ -1,7 +1,10 @@
 import React from 'react';
-import 'antd/dist/antd.css';
 import {Link} from 'react-router-dom';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { 
+  Layout, 
+  Menu, 
+  Breadcrumb 
+} from 'antd';
 import {
   HomeOutlined,
   ReadOutlined,
@@ -13,7 +16,12 @@ import styles from '../styles/index.scss';
 import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
 
-const { Header, Content, Footer, Sider } = Layout;
+const { 
+  Header, 
+  Content, 
+  Footer, 
+  Sider 
+} = Layout;
 const { SubMenu } = Menu;
 
 export default class Main extends React.Component {
@@ -22,7 +30,6 @@ export default class Main extends React.Component {
   };
 
   onCollapse = collapsed => {
-    console.log(collapsed);
     this.setState({ collapsed });
   };
 
@@ -33,7 +40,6 @@ export default class Main extends React.Component {
     let breadcrumb = breadcrumbs.map((item, index) => 
       <Breadcrumb.Item>{item}</Breadcrumb.Item>
     )
-    console.log(breadcrumbs,breadcrumb);
     return (
       <Layout style={{ minHeight: '100vh' }}>
         <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
@@ -67,7 +73,7 @@ export default class Main extends React.Component {
             <Breadcrumb style={{ margin: '16px 0' }}>
               {
                 breadcrumbs.map(
-                  (item, index) => <Breadcrumb.Item>{item}</Breadcrumb.Item>
+                  (item, index) => <Breadcrumb.Item key={index}>{item}</Breadcrumb.Item>
                 )
               }
             </Breadcrumb>

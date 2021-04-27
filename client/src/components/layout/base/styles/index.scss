@@ -12,7 +12,8 @@
 			background: #fff;
 			height: 0;
 			flex: 1 1 auto;
-			overflow-y: auto;
+			min-width: 800px;
+			overflow: hidden;
 		}
 	}
 }

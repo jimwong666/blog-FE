@@ -124,7 +124,7 @@ module.exports = merge(webpackBaseConfig, {
     ].concat(
         Object.keys(entryObj).map(chunkName=>{
             return new HtmlWebpackPlugin({
-                title: 'React Scaffold',
+                title: 'paludina的博客',
                 filename: `${chunkName}.html`,
                 chunks: [chunkName],
                 template: pathResolve('public/index.html'),

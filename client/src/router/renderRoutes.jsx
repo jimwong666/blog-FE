@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Main from '@components/layout/main/index';
+import Main from '@components/layout/base';
 
 const renderRoutes = (routes, extraProps = {}, switchProps = {}) => routes ? (
     <Switch {...switchProps}>

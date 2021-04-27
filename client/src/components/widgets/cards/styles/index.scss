@@ -1,0 +1,86 @@
+.link{
+	display: block;
+	margin-left: 20px;
+	.home-item {
+		margin-bottom: 20px;
+		background: #f9f9f9;
+		font-size: 16px;
+		color: #666;
+		display: flex;
+		flex-direction: column;
+		// 覆盖antd样式
+		.ant-card-head {
+			background: #f1f1f1;
+			border-radius: 5px 5px 0 0;
+		}
+		.ant-card-meta-avatar {
+			padding-right: 5px;
+		}
+		.home-item-icon, .home-item-icon-sub {
+			float: left;
+			margin-left: 12px;
+		}
+		.home-item-content{
+			margin-left: 35px;
+			display: flex;
+			.home-item-title {
+				flex: 1 0 auto;
+				p {
+					margin: 0 20% 0 0;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
+			}
+			.home-item-time {
+				flex: 0 0 auto;
+			}
+		}
+		&:hover .home-item-icon {
+			color: #609bd1;
+		}
+		&:hover .home-item-title {
+			color: #609bd1;
+		}
+	}
+	.home-comment-item{
+		.comment-name{
+			margin-left: 5px;
+		}
+		.item-type {
+			color: #666;
+			float: right;
+		}
+	}
+	
+	.home-message-item{
+		border-radius: 10px;
+		.home-message-item-sub {
+			border-radius: 10px;
+			margin: 20px 50px;
+			background: #eee;
+			.message-userName-sub, .home-item-content-sub {
+				font-size: 14px;
+				color: #999;
+			}
+			.home-item-content-sub {
+				margin-left: 35px;
+				.home-item-title-sub {
+					vertical-align: middle;
+				}
+			}
+		}
+		.message-userName{
+			margin-left: 5px;
+			vertical-align: middle;
+		}
+		.home-item-content {
+			color: #666;
+			margin-bottom: 10px;
+		}
+		.item-type {
+			color: #666;
+			float: right;
+		}
+	}
+}
