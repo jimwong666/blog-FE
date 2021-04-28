@@ -18,14 +18,14 @@ export default class AeticleCards extends React.Component {
 					size={"small"}
 					className={cx("home-item")}
 				>
-					<span className={"home-item-icon"}>
+					<span className={cx("home-item-icon")}>
 						<FileTextOutlined />
 					</span>
-					<div className={"home-item-content"}>
-						<span className={"home-item-title"}>
+					<div className={cx("home-item-content")}>
+						<span className={cx("home-item-title")}>
 							<p>{this.props.text}</p>
 						</span>
-						<span className={"home-item-time"}>
+						<span className={cx("home-item-time")}>
 							{this.props.operating} {this.props.time}
 						</span>
 					</div>

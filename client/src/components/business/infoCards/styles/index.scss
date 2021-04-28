@@ -1,0 +1,27 @@
+.info-cards-group {
+	position: fixed;
+	width: 300px;
+	.info-cards-main {
+		background: #f9f9f9;
+		.info-cards-icon {
+			font-size: 20px;
+		}
+		// .ant-card-actions {
+		// 	li *{
+		// 		font-size: 20px;
+		// 	}
+		// }
+	}
+	.info-cards-tag-group {
+		margin-top: 20px;
+		background: #f9f9f9;
+		.info-cards-tag {
+			margin: 5px;
+	 		padding: 0 8px;
+		}
+	}
+	.info-cards-other{
+		margin-top: 20px;
+		background: #f9f9f9;
+	}
+}

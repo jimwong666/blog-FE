@@ -25,6 +25,7 @@
 			display: flex;
 			.home-item-title {
 				flex: 1 0 auto;
+				width: 0;
 				p {
 					margin: 0 20% 0 0;
 					white-space: nowrap;
@@ -44,17 +45,42 @@
 		}
 	}
 	.home-comment-item{
-		.comment-name{
-			margin-left: 5px;
-		}
-		.item-type {
-			color: #666;
-			float: right;
+		.comment-item-title {
+			display: flex;
+			.comment-name-icon {
+				flex: 0 1 auto;
+				font-size: 22px;
+			}
+			.comment-name{
+				flex: 1 1 auto;
+				margin-left: 5px;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+			.item-type {
+				flex: 0 1 auto;
+				color: #666;
+				float: right;
+			}
 		}
 	}
-	
 	.home-message-item{
 		border-radius: 10px;
+		.message-item-title {
+			display: flex;
+			.message-name-icon {
+				flex: 0 1 auto;
+				font-size: 22px;
+			}
+			.message-name {
+				flex: 1 1 auto;
+				margin-left: 5px;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+		}
 		.home-message-item-sub {
 			border-radius: 10px;
 			margin: 20px 50px;
@@ -67,6 +93,9 @@
 				margin-left: 35px;
 				.home-item-title-sub {
 					vertical-align: middle;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
 				}
 			}
 		}
