@@ -10,6 +10,7 @@ import {
 import styles from '../styles/index.scss';
 import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
+const { Meta } = Card;
 
 export default class CommentCards extends React.Component {
 	render(){
@@ -28,8 +29,8 @@ export default class CommentCards extends React.Component {
 					}
 					type="inner"
 				>
-					<span className={cx("home-item-icon")}>
-						<EditOutlined />
+					{/* <span className={cx("home-item-icon")}>
+						<EditOutlined />：
 					</span>
 					<div className={cx("home-item-content")}>
 						<span className={cx("home-item-title")}>
@@ -38,7 +39,32 @@ export default class CommentCards extends React.Component {
 						<span className={cx("home-item-time")}>
 							{this.props.operating} {this.props.time}
 						</span>
-					</div>
+					</div> */}
+
+					<Meta
+						avatar={<Avatar 
+							alt={"头像"}
+							src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+						/>}
+						title={
+							<span className={cx("message-userName")}>{this.props.userName}</span>
+						}
+						description={
+							<>
+								<span className={cx("home-item-icon")}>
+									<EditOutlined />：
+								</span>
+								<div className={cx("home-item-content")}>
+									<span className={cx("home-item-title")}>
+										<p>{this.props.text}</p>
+									</span>
+									<span className={cx("home-item-time")}>
+										{this.props.operating} {this.props.time}
+									</span>
+								</div>
+							</>
+						}
+					/>
 				</Card>
 			</a>
 		)

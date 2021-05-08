@@ -43,7 +43,7 @@ export default class MessageCards extends React.Component {
 							description={
 								<>
 									<span className={cx("home-item-icon-sub")}>
-										<MessageOutlined />
+										<MessageOutlined />：
 									</span>
 									<div className={cx("home-item-content-sub")}>
 										<div className={cx("home-item-title-sub")}>
@@ -56,14 +56,17 @@ export default class MessageCards extends React.Component {
 					</Card>
 					<Divider orientation="left" style={{color: "#bbb", fontSize: "12px"}}>回复</Divider>
 					<Meta
-						avatar={<Avatar alt={"头像"} src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+						avatar={<Avatar 
+							alt={"头像"}
+							src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+						/>}
 						title={
 							<span className={cx("message-userName")}>{this.props.userName}</span>
 						}
 						description={
 							<>
 								<span className={cx("home-item-icon")}>
-									<MessageOutlined />
+									<MessageOutlined />：
 								</span>
 								<div className={cx("home-item-content")}>
 									<span className={cx("home-item-title")}>

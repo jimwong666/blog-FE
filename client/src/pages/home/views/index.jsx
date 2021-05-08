@@ -39,6 +39,8 @@ export default class Index extends React.Component{
                     <Cards
                         type="comment"
                         href={"javascript:void(0);"} 
+                        userId={"9527"}
+                        userName={"9527"}
                         title={"JS源码赏析"}
                         text={"写的好啊！"}
                         time={"16:48"}

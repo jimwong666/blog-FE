@@ -3,20 +3,18 @@
 	margin-left: 20px;
 	.home-item {
 		margin-bottom: 20px;
-		background: #f9f9f9;
+		background: #fcfcfc;
 		font-size: 16px;
 		color: #666;
 		display: flex;
 		flex-direction: column;
-		// 覆盖antd样式
-		.ant-card-head {
-			background: #f1f1f1;
-			border-radius: 5px 5px 0 0;
-		}
-		.ant-card-meta-avatar {
-			padding-right: 5px;
-		}
-		.home-item-icon, .home-item-icon-sub {
+		.home-item-icon{
+			font-size: 16px;
+			float: left;
+			margin-left: 12px;
+		} 
+		.home-item-icon-sub {
+			font-size: 14px;
 			float: left;
 			margin-left: 12px;
 		}
@@ -50,6 +48,7 @@
 			.comment-name-icon {
 				flex: 0 1 auto;
 				font-size: 22px;
+				margin-right: 5px;
 			}
 			.comment-name{
 				flex: 1 1 auto;
@@ -64,14 +63,26 @@
 				float: right;
 			}
 		}
+		.message-userName{
+			margin-left: 5px;
+			vertical-align: middle;
+		}
+		.home-item-content {
+			color: #666;
+			margin-bottom: 10px;
+		}
+		.item-type {
+			color: #666;
+			float: right;
+		}
 	}
 	.home-message-item{
-		border-radius: 10px;
 		.message-item-title {
 			display: flex;
 			.message-name-icon {
 				flex: 0 1 auto;
 				font-size: 22px;
+				margin-right: 5px;
 			}
 			.message-name {
 				flex: 1 1 auto;
@@ -82,9 +93,8 @@
 			}
 		}
 		.home-message-item-sub {
-			border-radius: 10px;
 			margin: 20px 50px;
-			background: #eee;
+			background: #fafafa;
 			.message-userName-sub, .home-item-content-sub {
 				font-size: 14px;
 				color: #999;
