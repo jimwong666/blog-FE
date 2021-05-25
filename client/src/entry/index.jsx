@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import RootRouter from '@router';
 import {applyMiddleware, createStore} from "redux";
 import thunk from "redux-thunk";
-import rootReducer from "../store";
+import rootReducer from "../rootReducer";
 import {Provider} from "react-redux";
 import simpleAsync from "@utils/reduxSimpleAsync";
 

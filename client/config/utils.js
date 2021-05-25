@@ -34,8 +34,8 @@ function getEntry(entryDir) {
                 _arr.pop();
                 let _tar = _arr.join('.');
                 let _rel_tar = path.relative(entryDir, _tar)
-                _rel_tar = _rel_tar.replace('\\', '/');
-                entryMap[_rel_tar] = ['@babel/polyfill', fullPathName];
+                _rel_tar = _rel_tar.replace(/\\/g, '/');
+                entryMap[_rel_tar] = ['@babel/polyfill', fullPathName.replace(/\\/g, '/')];
             }
 
         });

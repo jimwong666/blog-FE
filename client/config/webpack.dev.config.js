@@ -122,7 +122,7 @@ module.exports = merge(webpackBaseConfig, {
             'BASE_URL': JSON.stringify(`${devApiPath}`)
         }),
     ].concat(
-        Object.keys(entryObj).map(chunkName=>{
+        Object.keys(entryObj).map(chunkName=>{ // 多页面兼容
             return new HtmlWebpackPlugin({
                 title: 'paludina的博客',
                 filename: `${chunkName}.html`,
