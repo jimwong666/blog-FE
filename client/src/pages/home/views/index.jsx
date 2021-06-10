@@ -1,18 +1,57 @@
 import React from 'react';
 import { 
-	Divider
+	Divider,
+    Button
 } from 'antd';
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 import InfoCards from '@components/business/infoCards';
 import Cards from '@components/widgets/cards';
 import styles from '../styles/index.scss';
 import classNames from "classnames/bind";
 import { xml } from 'cheerio';
 const cx = classNames.bind(styles);
+import {fetchTest} from "../actions";
 
+const mapStateToProps = (state) => ({
+    customTestFetch: state.getIn(["homeReducer", "customTestFetch"]),
+    testFetch: state.getIn(["homeReducer", "testFetch"])
+})
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        fetchTest
+    }, dispatch)
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
 export default class Index extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            fatherNumber: 1
+        }
+        this.test = this.test.bind(this);
+    }
+
+    test(txt){
+        this.props.fetchTest(txt)
+    }
+
     render(){
+        const {customTestFetch, testFetch} = this.props;
         return(
             <div className={cx("home-content")}>
+                <div>
+                    {customTestFetch.get("data")}
+                </div>
+                <div>
+                    {String(customTestFetch.get("status"))}
+                </div>
+                <div>
+                    {customTestFetch.get("txt")}
+                </div>
+                <div onClick={() => this.test("lalala")}>this.props.</div>
                 <div className={cx("info-list")}>
                     <Divider orientation="left" style={{color: "#999"}}>2020-04-27</Divider>
                     <Cards
@@ -48,7 +87,7 @@ export default class Index extends React.Component{
                     />
                 </div>
                 <div className={cx("info-cards")}>
-                    <InfoCards />
+                    <InfoCards father={testFetch} />
                 </div>
             </div>
         )

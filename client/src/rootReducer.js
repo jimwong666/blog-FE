@@ -1,10 +1,9 @@
 import { combineReducers } from 'redux-immutable';
 
-
+import {reducer as homeReducer} from '@pages/home';
 import {reducer as workReducer} from '@pages/work';
 
-const rootReducer = combineReducers({
+export default combineReducers({
+    homeReducer,
     workReducer
 });
-
-export default rootReducer

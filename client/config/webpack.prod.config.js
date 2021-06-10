@@ -9,7 +9,8 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const webpackBaseConfig = require('./webpack.base.config');
 const {pathResolve, getPackageConfig, getEntry} = require('./utils');
 const webpackConfig = getPackageConfig();
-const entryObj = getEntry(pathResolve('src/entry'))
+const entryObj = getEntry(pathResolve('src/entry'));
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; 
 
 const publicPath = webpackConfig.assetsPath || '//scmstatic.abiz.com/';
 const distApiPath = webpackConfig.distApiPath || '//scm.abiz.com/';
@@ -101,7 +102,8 @@ module.exports = merge(webpackBaseConfig, {
 		new MiniCssExtractPlugin({
 			filename: 'css/[name].[contenthash:8].css',
 			chunkFilename: 'css/[name].[contenthash:8].css'
-		})
+		}),
+		new BundleAnalyzerPlugin(),
 	].concat(
 		Object.keys(entryObj).filter(chunkName=>{
 			//产品模式下，只有单页引用会生成html文件，多页走后端项目中的html

@@ -17,8 +17,60 @@ const cx = classNames.bind(styles);
 
 const { Meta } = Card;
 
-export default class InfoCards extends React.Component {
+export default class InfoCards extends React.PureComponent {
+	constructor(props){
+        super(props);
+        console.log("这里是constructor！");
+        this.state = {
+            a: 1000
+        }
+		this.sub = this.sub.bind(this);
+    }
+    static getDerivedStateFromProps(nextProps, nextState){
+        console.log("这里是static getDerivedStateFromProps！");
+		console.log("static getDerivedStateFromProps！","nextProps",nextProps,"nextState",nextState);
+        return null;
+    }
+    componentDidMount(){
+        console.log("这里是componentDidMount！");
+    }
+    // shouldComponentUpdate(nextProps, nextState){ //PureComponent 搭配 immutable.js，perfect！
+    //     console.log("这里是shouldComponentUpdate！");
+	// 	console.log("shouldComponentUpdate！","nextProps",nextProps,"nextState",nextState);
+	// 	console.log("THIS","this.props",this.props,"this.state",this.state);
+	// 	return true;
+    // }
+    getSnapshotBeforeUpdate(prevProps, prevState){
+        console.log("这里是getSnapshotBeforeUpdate！");
+		console.log("getSnapshotBeforeUpdate！","prevProps",prevProps,"prevState",prevState);
+		console.log("THIS","this.props",this.props,"this.state",this.state);
+        return "滚动条在150px处~";
+    }
+    componentDidUpdate(prevProps, prevState, snapshot){
+        console.log("这里是componentDidUpdate！");
+		console.log("componentDidUpdate！","prevProps",prevProps,"prevState",prevState,"snapshot",snapshot);
+		console.log("THIS","this.props",this.props,"this.state",this.state);
+    }
+    componentWillUnmount(){
+        console.log("这里是componentWillUnmount！");
+    }
+
+	sub(){
+		this.setState(
+			(state, props) => {
+				console.log(state, props);
+				return {
+					a: --state.a
+				}
+			},()=>{
+				console.log("setState完成！")
+			}
+		);
+	}
+
 	render() {
+        console.log("这里是render！");
+		
 		return(
 			<div className={cx("info-cards-group")}>
 				<Card
@@ -64,8 +116,9 @@ export default class InfoCards extends React.Component {
 				>
 					<Meta
 					avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-					title="jim wong"
+					title={this.state.a}
 					description="欢迎光临~！"
+					onClick={()=>this.sub()}
 					/>
 				</Card>
 
