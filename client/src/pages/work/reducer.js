@@ -1,13 +1,13 @@
 import {fromJS} from "immutable";
 import * as constant from "./actionsTypes";
 import {combineReducers} from "redux-immutable";
-
+import {withAsyncReducer} from '@utils/reduxSimpleAsync';
 
 //获取页面初始数据
 const preData = (
     state = fromJS({
         isFetching: false,
-        data: ''
+        data: '初始化'
     }),
     action
 ) => {
@@ -24,7 +24,9 @@ const preData = (
     }
 };
 
+const preData2 = withAsyncReducer(constant.FETCH_CUSTOMER_TEMPLATES);
 
 export default combineReducers({
-    preData
+    preData,
+    preData2
 })

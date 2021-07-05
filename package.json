@@ -24,9 +24,9 @@
   },
   "webpackConfig": {
     "port": 3333,
-    "devApiPath": "paludina.com",
+    "devApiPath": "https://focusapi.vemic.com/mock/144",
     "assetsPath": "/dist/",
-    "distApiPath": "paludina.com"
+    "distApiPath": "https://paludina.com"
   },
   "keywords": [
     "react"

@@ -32,6 +32,12 @@ export const asyncFetchPreData = (callback) => dispatch => {
     });
 };
 
+// 一样的
+export const asyncFetchPreData2 = (callback) => ({
+    actionTypePrefix: constant.FETCH_CUSTOMER_TEMPLATES,
+    request: axios.get(`${BASE_URL}/api/imgList`),
+    callback
+})
 
 
 

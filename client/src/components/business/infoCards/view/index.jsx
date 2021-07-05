@@ -17,7 +17,7 @@ const cx = classNames.bind(styles);
 
 const { Meta } = Card;
 
-export default class InfoCards extends React.PureComponent {
+export default class InfoCards extends React.Component {
 	constructor(props){
         super(props);
         console.log("这里是constructor！");

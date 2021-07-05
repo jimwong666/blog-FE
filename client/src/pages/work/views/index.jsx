@@ -4,15 +4,17 @@ import {bindActionCreators} from "redux";
 import classNames from "classnames/bind";
 import styles from "../styles/index.scss";
 const cx = classNames.bind(styles);
-import {asyncFetchPreData} from '../actions'
+import {asyncFetchPreData, asyncFetchPreData2} from '../actions'
 
 const mapStateToProps = (state) => ({
-        preData: state.getIn(['workReducer', 'preData']),
-    });
+    preData: state.getIn(['workReducer', 'preData']),
+    preData2: state.getIn(['workReducer', 'preData2'])
+});
 
 const mapDispatchToProps = dispatch => {
     return bindActionCreators({
-        asyncFetchPreData
+        asyncFetchPreData,
+        // asyncFetchPreData2
     }, dispatch)
 };
 
@@ -21,10 +23,14 @@ export default class Work extends React.Component{
 
     componentDidMount(){
         this.props.asyncFetchPreData();
+        // this.props.asyncFetchPreData2();
     }
 
     render(){
-        const {preData} = this.props;
+        const {preData, preData2} = this.props;
+        console.log(preData.toJS());
+        console.log("---------------------");
+        // console.log(preData2.toJS());
         return(
             <ul>
                 {
