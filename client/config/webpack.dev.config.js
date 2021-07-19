@@ -4,13 +4,12 @@ const {merge} = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const webpackBaseConfig = require('./webpack.base.config');
-const {pathResolve, getPackageConfig, getEntry} = require('./utils');
-const webpackConfig = getPackageConfig();
-const entryObj = getEntry(pathResolve('src/entry'))
+const {clientPathResolve, appConfig, getEntry} = require('./utils/tools');
+const entryObj = getEntry(clientPathResolve('src/entry'))
 
-const port = webpackConfig.port || 3000;
+const port = appConfig.dev_clientPort || 3000;
 const publicPath = '/';
-const devApiPath = webpackConfig.devApiPath || 'http://localhost:'+port+'/';
+const dev_apiPath = appConfig.dev_apiPath || 'http://localhost:'+port+'/';
 
 module.exports = merge(webpackBaseConfig, {
     output: {
@@ -27,9 +26,7 @@ module.exports = merge(webpackBaseConfig, {
         open: true,
         openPage: 'http://localhost:'+ port +'/',
         historyApiFallback: { //单页应用刷新页面重定向到对应的单页目录下，以便支持多个单页和多页共存
-			rewrites: Object.keys(entryObj).filter(chunkName=>{
-                return chunkName.indexOf('/') !== -1;
-            }).map(chunkName=>{
+			rewrites: Object.keys(entryObj).map(chunkName=>{
                 chunkName = chunkName.split('/')[0];
                 return {
                     from: new RegExp('^\/'+chunkName+'\/', 'g'),
@@ -49,7 +46,7 @@ module.exports = merge(webpackBaseConfig, {
         rules: [
             {
                 test: /\.scss$/,
-                include: [pathResolve('src')],
+                include: [clientPathResolve('src')],
                 exclude: /node_modules/,
                 use: [
                     {
@@ -102,7 +99,7 @@ module.exports = merge(webpackBaseConfig, {
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/,
-                include: [pathResolve('src')],
+                include: [clientPathResolve('src')],
                 exclude: /node_modules/,
                 use:
                     {
@@ -119,7 +116,7 @@ module.exports = merge(webpackBaseConfig, {
         new ReactRefreshPlugin(),
         new webpack.DefinePlugin({
             //所有ajax请求的基础url
-            'BASE_URL': JSON.stringify(`${devApiPath}`)
+            'BASE_URL': JSON.stringify(`${dev_apiPath}`)
         }),
     ].concat(
         Object.keys(entryObj).map(chunkName=>{ // 多页面兼容
@@ -127,8 +124,8 @@ module.exports = merge(webpackBaseConfig, {
                 title: 'paludina的博客',
                 filename: `${chunkName}.html`,
                 chunks: [chunkName],
-                template: pathResolve('public/index.html'),
-                favicon: pathResolve('public/favicon.ico')
+                template: clientPathResolve('public/index.html'),
+                favicon: clientPathResolve('public/favicon.ico')
             })
         })
     )

@@ -7,26 +7,25 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const webpackBaseConfig = require('./webpack.base.config');
-const {pathResolve, getPackageConfig, getEntry} = require('./utils');
-const webpackConfig = getPackageConfig();
-const entryObj = getEntry(pathResolve('src/entry'));
+const {clientPathResolve, appConfig, getEntry} = require('./utils/tools');
+const entryObj = getEntry(clientPathResolve('src/entry'));
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; 
 
-const publicPath = webpackConfig.assetsPath || '//scmstatic.abiz.com/';
-const distApiPath = webpackConfig.distApiPath || '//scm.abiz.com/';
+const publicPath = appConfig.assetsPath || '//scmstatic.abiz.com/';
+const distApiPath = appConfig.distApiPath || '//scm.abiz.com/';
 
 module.exports = merge(webpackBaseConfig, {
 	output: {
 		filename: 'js/[name].[chunkhash:8].js',
 		chunkFilename: 'js/[name].[chunkhash:8].js',
-		path: pathResolve('../dist'),
+		path: clientPathResolve('../dist'),
 		publicPath: publicPath
 	},
 	module: {
 		rules: [
 			{
 				test: /\.scss$/,
-				include: [pathResolve('src')],
+				include: [clientPathResolve('src')],
 				exclude: /node_modules/,
 				use: [
 					{
@@ -80,7 +79,7 @@ module.exports = merge(webpackBaseConfig, {
 			},
 			{
 				test: /\.(jpe?g|png|gif|svg)$/,
-				include: [pathResolve('src')],
+				include: [clientPathResolve('src')],
 				exclude: /node_modules/,
 				use: {
 					loader: 'url-loader',
@@ -96,7 +95,7 @@ module.exports = merge(webpackBaseConfig, {
 	plugins: [
 		//清除dist目录文件
 		new CleanWebpackPlugin({
-			cleanOnceBeforeBuildPatterns: pathResolve('../dist/**/*')
+			cleanOnceBeforeBuildPatterns: clientPathResolve('../dist/**/*')
 		}),
 		//提取css为单独css文件
 		new MiniCssExtractPlugin({
@@ -105,16 +104,13 @@ module.exports = merge(webpackBaseConfig, {
 		}),
 		new BundleAnalyzerPlugin(),
 	].concat(
-		Object.keys(entryObj).filter(chunkName=>{
-			//产品模式下，只有单页引用会生成html文件，多页走后端项目中的html
-			return chunkName.indexOf('/') !== -1 || chunkName === 'index';
-		}).map(chunkName=>{
+		Object.keys(entryObj).map(chunkName=>{
             return new HtmlWebpackPlugin({
                 title: 'paludina的博客',
                 filename: `${chunkName}.html`,
                 chunks: [chunkName],
-                template: pathResolve('public/index.html'),
-                // favicon: pathResolve('public/favicon.ico')
+                template: clientPathResolve('public/index.html'),
+                // favicon: clientPathResolve('public/favicon.ico')
             })
         })
 	),
@@ -145,7 +141,7 @@ module.exports = merge(webpackBaseConfig, {
 				},
 				commons: {
 					name: "commons",
-					test: pathResolve('src'), // 可自定义拓展你的规则
+					test: clientPathResolve('src'), // 可自定义拓展你的规则
 					minChunks: 2, // 最小共用次数
 					priority: 5,
 					reuseExistingChunk: true

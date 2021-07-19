@@ -1,18 +1,22 @@
 const fs = require('fs');
 const path = require('path');
 
-const pathResolve = (relativePath) => {
-	return path.resolve(__dirname, '../', relativePath);
+/*
+* client 目录解析
+*
+* */
+const clientPathResolve = (relativePath) => {
+	return path.resolve(__dirname, '../../', relativePath);
 }
 
 /**    
- * get package.json version    
+ * get package.json version（废弃，自建了配置文件，还是不要放在package.json里面）
  */    
-function getPackageConfig(){    
-    const pkgPath = pathResolve('../package.json');    
-    const pkgData = JSON.parse(fs.readFileSync(pkgPath));    
-    return pkgData.webpackConfig;    
-}
+// function getPackageConfig(){
+//     const pkgPath = clientPathResolve('../package.json');
+//     const pkgData = JSON.parse(fs.readFileSync(pkgPath));
+//     return pkgData.webpackConfig;
+// }
 
 
 /**
@@ -22,7 +26,7 @@ function getPackageConfig(){
 function getEntry(entryDir) {
     let entryMap = {};
 
-    var getFile = function (pageDir) {
+    let getFile = function (pageDir) {
         fs.readdirSync(pageDir).forEach((pathname) => {
             let fullPathName = path.resolve(pageDir, pathname);
             let stat = fs.statSync(fullPathName);
@@ -35,7 +39,8 @@ function getEntry(entryDir) {
                 let _tar = _arr.join('.');
                 let _rel_tar = path.relative(entryDir, _tar)
                 _rel_tar = _rel_tar.replace(/\\/g, '/');
-                entryMap[_rel_tar] = ['@babel/polyfill', fullPathName.replace(/\\/g, '/')];
+                // entryMap[_rel_tar] = ['@babel/polyfill', fullPathName.replace(/\\/g, '/')];
+                entryMap[_rel_tar] = fullPathName.replace(/\\/g, '/');
             }
 
         });
@@ -45,7 +50,7 @@ function getEntry(entryDir) {
 }
 
 module.exports = {
-    pathResolve,
-    getPackageConfig,
+    clientPathResolve,
+    appConfig: require(clientPathResolve('../config')).getConfig(),
     getEntry
 }

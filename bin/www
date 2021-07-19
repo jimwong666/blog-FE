@@ -4,15 +4,15 @@ const fs = require('fs');
 const path = require('path');
 const logger = require('../lib/logger');
 const debug = require('debug')('app:server');
-
+// https证书
 const privateCrt = fs.readFileSync(path.join(__dirname, 'https/1_paludina.com_bundle.crt'), 'utf8');
 const privateKey = fs.readFileSync(path.join(__dirname, 'https/2_paludina.com.key'), 'utf8');
-const HTTPS_OPTOIN = {
+const HTTPS_OPTION = {
   key: privateKey,
   cert: privateCrt
 };
 
-const server = https.createServer(HTTPS_OPTOIN, app);
+const server = https.createServer(HTTPS_OPTION, app);
 server.listen(app.get('port'), function() {
   logger.getLogger().info('Server unit ' + process.pid + ' listening on port ' + app.get('port'));
 });

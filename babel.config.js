@@ -11,6 +11,15 @@ module.exports = function(api){
 			"@babel/preset-react"
 		],
 		"plugins": [
+			[
+				"@babel/plugin-transform-runtime",
+				{
+					"corejs": {
+						"version": 3,
+						"proposals": true
+					}
+				}
+			],
 			//支持高阶组件装饰器
 			["@babel/plugin-proposal-decorators", { "legacy": true }],
 			//支持class静态属性

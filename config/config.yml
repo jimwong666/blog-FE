@@ -1,0 +1,33 @@
+#devMode: true
+
+# server config
+domainUrl: "paludina.com"
+appName: "TEST"
+version: "1.0.0"
+clientType: "PC_WEB"
+title: "xxx"
+serverPort: 5000
+logLevel: "INFO"
+logDist: "d:\\log"
+# bff keep-alive超时时间 协议自带超时时间，暂时无用
+# keepAliveTimeout: 60000
+# backend socket超时时间
+socketTimeout: 60000
+# 文件处理超时时间
+fileSocketTimeout: 180000
+# cdn 地址
+cdn: ""
+# 加密编码
+encoding: "utf8"
+# 后端地址
+backendUrl: "https://10.110.1.185:8050"
+# dev
+dev_backendUrl: "https://10.110.1.185:8050"
+
+# client config
+# dev
+dev_clientPort: 3333
+dev_apiPath: "https://focusapi.vemic.com/mock/144"
+# prod
+assetsPath: "/dist/"
+distApiPath: "https://paludina.com"

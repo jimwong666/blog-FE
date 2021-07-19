@@ -10,7 +10,7 @@ const history = require('connect-history-api-fallback');
 
 const errors = require('./lib/errors');
 const logger = require('./lib/logger');
-const conf = require('./lib/utils/tools').GetAppConfig();
+const conf = require('./lib/utils/tools').appConfig;
 const routerRigister = require('./lib/route');
 
 const globalFilter = require('./lib/filter/global-filter');
@@ -21,7 +21,7 @@ const express = require('express');
 const app = express();
 
 app.set("trust proxy", true);
-app.set('port', process.env.PORT || conf.serverConfig.port);
+app.set('port', process.env.PORT || conf.serverPort);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(favicon(path.join(__dirname, 'favicon.ico')));
