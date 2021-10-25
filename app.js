@@ -51,6 +51,10 @@ routerRigister.route(app);
 // fe
 app.use(history({
     index:'/dist/index.html',
+    // 多页面 支持
+    // rewrites: [
+    //     { from: /\/xxx/, to: '/xxxx.html'}
+    // ]
 }));
 // static
 app.use('/dist', express.static(path.join(__dirname, 'dist'),{

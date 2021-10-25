@@ -11,12 +11,13 @@ const mapStateToProps = (state) => ({
     preData2: state.getIn(['workReducer', 'preData2'])
 });
 
-const mapDispatchToProps = dispatch => {
-    return bindActionCreators({
+const mapDispatchToProps = dispatch => ({
+    ...bindActionCreators({
         asyncFetchPreData,
-        // asyncFetchPreData2
+        asyncFetchPreData2
     }, dispatch)
-};
+    
+});
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Work extends React.Component{
