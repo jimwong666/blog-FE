@@ -1,5 +1,6 @@
 const app = require('../app');
-const https = require('https');
+const http = require('http');
+// const https = require('https');
 const fs = require('fs');
 const path = require('path');
 const logger = require('../lib/logger');
@@ -12,7 +13,12 @@ const HTTPS_OPTION = {
   cert: privateCrt
 };
 
-const server = https.createServer(HTTPS_OPTION, app);
+// const server = https.createServer(HTTPS_OPTION, app);
+// server.listen(app.get('port'), function() {
+//   logger.getLogger().info('Server unit ' + process.pid + ' listening on port ' + app.get('port'));
+// });
+
+const server = http.createServer(app);
 server.listen(app.get('port'), function() {
   logger.getLogger().info('Server unit ' + process.pid + ' listening on port ' + app.get('port'));
 });

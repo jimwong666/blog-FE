@@ -1,12 +1,12 @@
 #devMode: true
 
 # server config
-domainUrl: "paludina.com"
+domainUrl: "paludina.test.com"
 appName: "TEST"
 version: "1.0.0"
 clientType: "PC_WEB"
 title: "xxx"
-serverPort: 5000
+serverPort: 9009
 logLevel: "INFO"
 logDist: "d:\\log"
 # bff keep-alive超时时间 协议自带超时时间，暂时无用
